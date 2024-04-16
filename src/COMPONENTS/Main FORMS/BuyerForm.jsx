@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const BuyerForm = () => {
+
+  //STATE VARIABLES
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    id: "",
-    teamNm: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState({id: "", teamNm: "", password: "" });
 
   const handleChange = (e) => {
+    //destructures properties using target
     const { name, value } = e.target;
     setFormData({
+      //spreads formData and stores newVal
       ...formData,
       [name]: value,
     });
@@ -31,6 +31,7 @@ export const BuyerForm = () => {
         team.password === formData.password
     );
 
+    //set the updates to localStorage
     localStorage.setItem('currentLoggedTeam', JSON.stringify(matchTeam));
 
     if (matchTeam) {
@@ -53,7 +54,7 @@ export const BuyerForm = () => {
         <div className="w-full py-2">
           <label className="text-lg">Buyer ID : </label>
           <input
-            className="w-full text-lg py-1 px-3"
+            className="w-full text-lg py-1 px-3 outline-none focus:border-b-2 rounded bg-[#242424]"
             type="text"
             name="id"
             value={formData.id}
@@ -64,7 +65,7 @@ export const BuyerForm = () => {
         <div className="w-full py-2">
           <label className="text-lg">Team Name : </label>
           <input
-            className="w-full text-lg py-1 px-3"
+            className="w-full text-lg py-1 px-3 outline-none focus:border-b-2 rounded bg-[#242424]"
             type="text"
             name="teamNm"
             value={formData.teamNm}
@@ -75,7 +76,7 @@ export const BuyerForm = () => {
         <div className="w-full py-2">
           <label className="text-lg">Password : </label>
           <input
-            className="w-full text-lg py-1 px-3"
+            className="w-full text-lg py-1 px-3 outline-none focus:border-b-2 rounded bg-[#242424]"
             type="password"
             name="password"
             value={formData.password}
@@ -85,7 +86,7 @@ export const BuyerForm = () => {
         </div>
         <button
           type="submit"
-          className="my-2 border mx-[33%] px-2 py-2 w-[100px]"
+          className="my-2 border mx-[33%] px-2 py-2 w-[100px] rounded hover:text-black hover:bg-white text-lg font-semibold"
         >
           LOG IN
         </button>
